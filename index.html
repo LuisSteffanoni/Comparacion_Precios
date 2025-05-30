@@ -2,10 +2,238 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Omega Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gaucha Asador - Plan Your Perfect Carne Asada</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #1c1c1c, #2e2e2e, #4a2c2c, #ff7a7a);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #F8F4ED;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        .content {
+            max-width: 1200px;
+            width: 100%;
+            flex: 1;
+        }
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .hero img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ff7a7a;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #E5EAE6;
+            margin-bottom: 2rem;
+        }
+        .cta-button {
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(45deg, #ff7a7a, #e55a5a);
+            color: #F8F4ED;
+            border: none;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+        }
+        .cta-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 122, 122, 0.5);
+            background: linear-gradient(45deg, #e55a5a, #ff8787);
+        }
+        .about {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(28, 28, 28, 0.2), rgba(74, 44, 44, 0.3));
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .about h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ff7a7a;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+        .about p {
+            font-size: 1.1rem;
+            color: #E5EAE6;
+        }
+        .testimonials {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(28, 28, 28, 0.2), rgba(74, 44, 44, 0.3));
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .testimonials h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ff7a7a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .testimonial {
+            background: linear-gradient(135deg, rgba(28, 28, 28, 0.15), rgba(74, 44, 44, 0.2));
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+        .testimonial p {
+            font-size: 1rem;
+            color: #E5EAE6;
+            margin-bottom: 0.5rem;
+        }
+        .testimonial h3 {
+            font-size: 0.9rem;
+            color: #ff7a7a;
+            font-weight: 600;
+        }
+        .footer {
+            padding: 1.5rem;
+            text-align: center;
+            background: radial-gradient(circle, rgba(28, 28, 28, 0.6), rgba(74, 44, 44, 0.4));
+            backdrop-filter: blur(15px);
+            color: #F8F4ED;
+            border-top: 1px solid rgba(244, 237, 228, 0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #ff7a7a;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #e55a5a;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero img {
+                max-height: 350px;
+            }
+            .about, .testimonials {
+                padding: 1.5rem;
+            }
+            .about h2, .testimonials h2 {
+                font-size: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero img {
+                max-height: 250px;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            .about h2, .testimonials h2 {
+                font-size: 1.5rem;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello from OMEGA!</h1>
-    <p>This is a fresh GitHub Pages site.</p>
+    <div class="content">
+        <div class="hero">
+            <img src="https://via.placeholder.com/1200x500?text=Carne+Asada+Experience" alt="Vibrant Carne Asada Gathering">
+            <h1>Gaucha Asador</h1>
+            <p>Everything you need for the perfect carne asada, delivered to your door.</p>
+            <a href="catalog.html" class="cta-button">Shop Now</a>
+        </div>
+
+        <div class="about">
+            <h2>Why Choose Gaucha Asador?</h2>
+            <p>We make your carne asada effortless by delivering premium meats, fresh produce, and all the tools you need. From juicy ribeye to portable grills, we’ve got you covered for an unforgettable grilling experience.</p>
+        </div>
+
+        <div class="testimonials">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"Gaucha Asador made our family barbecue a hit! Everything arrived fresh and on time, and the grill was so easy to use."</p>
+                    <h3>– Maria G.</h3>
+                </div>
+                <div class="testimonial">
+                    <p>"The quality of the meats and veggies was top-notch. Ordering was a breeze, and the WhatsApp feature is genius!"</p>
+                    <h3>– Carlos R.</h3>
+                </div>
+                <div class="testimonial">
+                    <p>"Perfect for someone like me who loves carne asada but doesn’t know where to start. Highly recommend!"</p>
+                    <h3>– Ana L.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Contact Us: <a href="mailto:info@gauchaasador.com">info@gauchaasador.com</a> | (123) 456-7890</p>
+        <p>Follow Us: <a href="https://www.instagram.com/gauchaasador" target="_blank">Instagram</a> | <a href="https://www.gauchaasador.com">Website</a></p>
+        <p>© 2025 Gaucha Asador – Your Carne Asada Experts</p>
+    </footer>
 </body>
 </html>
