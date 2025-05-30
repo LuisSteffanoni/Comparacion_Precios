@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gaucha Asador - Your Carne Asada Experience</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #1c1c1c, #2e2e2e, #4a2c2c, #ff7a7a);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #F8F4ED;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        .hero {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        .content {
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(28, 28, 28, 0.2), rgba(74, 44, 44, 0.3));
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(244, 237, 228, 0.2);
+            animation: fadeIn 1s ease-in;
+            flex: 1;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #ff7a7a;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+        .content p {
+            margin-bottom: 1.5rem;
+            color: #E5EAE6;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .client-info {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(28, 28, 28, 0.2), rgba(74, 44, 44, 0.3));
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .client-info h2 {
+            color: #ff7a7a;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+        .client-info form {
+            display: grid;
+            gap: 1rem;
+        }
+        .client-info label {
+            display: flex;
+            flex-direction: column;
+            font-size: 1rem;
+            color: #E5EAE6;
+        }
+        .client-info input, .client-info select {
+            padding: 0.6rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 122, 122, 0.3);
+            color: #F8F4ED;
+            font-size: 1rem;
+            margin-top: 0.3rem;
+        }
+        .client-info select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23F8F4ED" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.7rem center;
+            background-size: 1rem;
+        }
+        .product-selection {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(28, 28, 28, 0.2), rgba(74, 44, 44, 0.3));
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .product-selection h2 {
+            color: #ff7a7a;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .item {
+            background: linear-gradient(135deg, rgba(28, 28, 28, 0.2), rgba(74, 44, 44, 0.3));
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(244, 237, 228, 0.2);
+        }
+        .item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        .item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .item h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #F8F4ED;
+        }
+        .item p {
+            font-size: 1rem;
+            color: #E5EAE6;
+            margin: 0.5rem 0;
+        }
+        .item input {
+            width: 70px;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 122, 122, 0.3);
+            color: #F8F4ED;
+            text-align: center;
+            font-size: 1rem;
+        }
+        .order-button {
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(45deg, #ff7a7a, #e55a5a);
+            color: #F8F4ED;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            display: block;
+            margin: 2rem auto;
+            font-size: 1.1rem;
+            font-weight: 600;
+            position: sticky;
+            bottom: 20px;
+            z-index: 10;
+        }
+        .order-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 122, 122, 0.5);
+            background: linear-gradient(45deg, #e55a5a, #ff8787);
+        }
+        .footer {
+            padding: 1.5rem;
+            text-align: center;
+            background: radial-gradient(circle, rgba(28, 28, 28, 0.6), rgba(74, 44, 44, 0.4));
+            backdrop-filter: blur(15px);
+            color: #F8F4ED;
+            border-top: 1px solid rgba(244, 237, 228, 0.2);
+            width: 100%;
+            max-width: 1200px;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+        .footer a {
+            color: #ff7a7a;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #e55a5a;
+        }
+        @media (max-width: 768px) {
+            .content {
+                padding: 1.5rem;
+            }
+            .content h1 {
+                font-size: 2.2rem;
+            }
+            .hero img {
+                height: 200px;
+            }
+            .client-info form {
+                grid-template-columns: 1fr;
+            }
+            .items {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+        }
+        @media (max-width: 480px) {
+            .content h1 {
+                font-size: 1.8rem;
+            }
+            .hero img {
+                height: 150px;
+            }
+            .client-info h2, .product-selection h2 {
+                font-size: 1.5rem;
+            }
+            .items {
+                grid-template-columns: 1fr;
+            }
+            .item img {
+                height: 180px;
+            }
+            .order-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img src="https://via.placeholder.com/1200x300?text=Carne+Asada+Experience" alt="Carne Asada Hero Image">
+    </div>
+    <div class="content">
+        <h1>Gaucha Asador</h1>
+        <p>Plan your perfect carne asada! Select your items, enter your details below, and share your order via WhatsApp.</p>
+
+        <!-- Meats Section -->
+        <div class="product-selection">
+            <h2>Meats</h2>
+            <div class="items">
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Ribeye+Steak" alt="Premium Ribeye Steak for grilling">
+                    <h3>Ribeye Steak</h3>
+                    <p>$15.99/lb</p>
+                    <input type="number" min="0" value="0" data-name="Ribeye Steak" data-price="15.99">
+                </div>
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Chicken+Thighs" alt="Juicy Chicken Thighs">
+                    <h3>Chicken Thighs</h3>
+                    <p>$6.99/lb</p>
+                    <input type="number" min="0" value="0" data-name="Chicken Thighs" data-price="6.99">
+                </div>
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Chorizo" alt="Spicy Chorizo Sausage">
+                    <h3>Chorizo</h3>
+                    <p>$4.99/lb</p>
+                    <input type="number" min="0" value="0" data-name="Chorizo" data-price="4.99">
+                </div>
+            </div>
+        </div>
+
+        <!-- Vegetables Section -->
+        <div class="product-selection">
+            <h2>Vegetables</h2>
+            <div class="items">
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Bell+Peppers" alt="Fresh Bell Peppers">
+                    <h3>Bell Peppers</h3>
+                    <p>$2.99/unit</p>
+                    <input type="number" min="0" value="0" data-name="Bell Peppers" data-price="2.99">
+                </div>
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Onions" alt="Crisp Onions">
+                    <h3>Onions</h3>
+                    <p>$1.49/unit</p>
+                    <input type="number" min="0" value="0" data-name="Onions" data-price="1.49">
+                </div>
+            </div>
+        </div>
+
+        <!-- Fruits Section -->
+        <div class="product-selection">
+            <h2>Fruits</h2>
+            <div class="items">
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Limes" alt="Zesty Limes">
+                    <h3>Limes</h3>
+                    <p>$0.50/unit</p>
+                    <input type="number" min="0" value="0" data-name="Limes" data-price="0.50">
+                </div>
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Avocados" alt="Ripe Avocados">
+                    <h3>Avocados</h3>
+                    <p>$1.99/unit</p jadoc-type="number" min="0" value="0" data-name="Avocados" data-price="1.99">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools & Supplies Section -->
+        <div class="product-selection">
+            <h2>Tools & Supplies</h2>
+            <div class="items">
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Asador+Grill" alt="Portable Asador Grill">
+                    <h3>Asador Grill</h3>
+                    <p>$49.99/unit</p>
+                    <input type="number" min="0" value="0" data-name="Asador Grill" data-price="49.99">
+                </div>
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Charcoal" alt="Premium Charcoal">
+                    <h3>Charcoal</h3>
+                    <p>$9.99/bag</p>
+                    <input type="number" min="0" value="0" data-name="Charcoal" data-price="9.99">
+                </div>
+                <div class="item">
+                    <img src="https://via.placeholder.com/280x200?text=Grilling+Tools" alt="Grilling Tool Set">
+                    <h3>Grilling Tools</h3>
+                    <p>$19.99/set</p>
+                    <input type="number" min="0" value="0" data-name="Grilling Tools" data-price="19.99">
+                </div>
+            </div>
+        </div>
+
+        <!-- Client Info Form -->
+        <div class="client-info">
+            <h2>Your Information</h2>
+            <form id="clientForm">
+                <label>
+                    Full Name
+                    <input type="text" id="clientName" required placeholder="Enter your full name">
+                </label>
+                <label>
+                    Delivery Address
+                    <input type="text" id="deliveryAddress" required placeholder="Enter delivery address">
+                </label>
+                <label>
+                    Payment Type
+                    <select id="paymentType" required>
+                        <option value="" disabled selected>Select payment type</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Card">Card</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                    </select>
+                </label>
+            </form>
+        </div>
+
+        <button class="order-button" onclick="generateOrder()">Share Order via WhatsApp</button>
+    </div>
+
+    <footer class="footer">
+        <p>Contact Us: <a href="mailto:info@gauchaasador.com">info@gauchaasador.com</a> | (123) 456-7890</p>
+        <p>Follow Us: <a href="https://www.instagram.com/gauchaasador" target="_blank">Instagram</a> | <a href="https://www.gauchaasador.com">Website</a></p>
+        <p>© 2025 Gaucha Asador – Your Carne Asada Experts</p>
+    </footer>
+
+    <script>
+        function generateOrder() {
+            // Validate client info
+            const clientName = document.getElementById('clientName').value.trim();
+            const deliveryAddress = document.getElementById('deliveryAddress').value.trim();
+            const paymentType = document.getElementById('paymentType').value;
+
+            if (!clientName || !deliveryAddress || !paymentType) {
+                alert('Please fill out all client information fields (Full Name, Delivery Address, and Payment Type).');
+                return;
+            }
+
+            // Collect order items
+            const items = document.querySelectorAll('input[type="number"]');
+            let orderText = `Gaucha Asador Order\n\nClient: ${clientName}\nDelivery Address: ${deliveryAddress}\nPayment Type: ${paymentType}\n\nItems:\n`;
+            let total = 0;
+            let hasItems = false;
+
+            items.forEach(item => {
+                const quantity = parseInt(item.value);
+                if (quantity > 0) {
+                    hasItems = true;
+                    const name = item.getAttribute('data-name');
+                    const price = parseFloat(item.getAttribute('data-price'));
+                    const itemTotal = quantity * price;
+                    total += itemTotal;
+                    orderText += `${name}: ${quantity} x $${price.toFixed(2)} = $${itemTotal.toFixed(2)}\n`;
+                }
+            });
+
+            if (!hasItems) {
+                alert('Please select at least one item!');
+                return;
+            }
+
+            orderText += `\nTotal: $${total.toFixed(2)}`;
+            const encodedOrder = encodeURIComponent(orderText);
+            const whatsappUrl = `https://wa.me/?text=${encodedOrder}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
